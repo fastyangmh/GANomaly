@@ -7,6 +7,16 @@ max_samples: null
 batch_size: 32
 num_workers: 0
 device: cuda
+lr: 1e-3
+in_chans: 1
+input_height: 64
+latent_dim: 256
+generator_feature_dim: 64
+discriminator_feature_dim: 64
+adversarial_weight: 1
+reconstruction_weight: 50
+encoding_weight: 1
+checkpoint_path: null
 
 # transforms configuration
 transforms_config:
@@ -43,3 +53,18 @@ target_transforms_config:
   test: null
 
   predict: null
+
+# optimizers configuration
+optimizers_config:
+  Adam:
+    betas:
+      - 0.9
+      - 0.999
+    eps: 1e-08
+    weight_decay: 0
+    amsgrad: False
+
+# learning rate schedulers configuration
+lr_schedulers_config:
+  CosineAnnealingLR:
+    T_max: 10
