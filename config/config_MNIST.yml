@@ -9,7 +9,7 @@ num_workers: 0
 device: cuda
 lr: 1e-3
 in_chans: 1
-input_height: 64
+input_height: 32
 latent_dim: 256
 generator_feature_dim: 64
 discriminator_feature_dim: 64
@@ -17,31 +17,38 @@ adversarial_weight: 1
 reconstruction_weight: 50
 encoding_weight: 1
 checkpoint_path: null
+seed: 0
+early_stopping: True
+patience: 3
+default_root_dir: save/
+gpus: -1
+precision: 32
+max_epochs: 100
 
 # transforms configuration
 transforms_config:
   train:
     Resize:
-      - 64
-      - 64
+      - 32
+      - 32
     ToTensor:
 
   val:
     Resize:
-      - 64
-      - 64
+      - 32
+      - 32
     ToTensor:
 
   test:
     Resize:
-      - 64
-      - 64
+      - 32
+      - 32
     ToTensor:
 
   predict:
     Resize:
-      - 64
-      - 64
+      - 32
+      - 32
     ToTensor:
 
 # target transforms configuration
