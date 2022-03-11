@@ -3,3 +3,43 @@ mode: train
 root: data/
 predefined_dataset: MNIST
 classes: ["normal", "abnormal"]
+max_samples: null
+batch_size: 32
+num_workers: 0
+device: cuda
+
+# transforms configuration
+transforms_config:
+  train:
+    Resize:
+      - 64
+      - 64
+    ToTensor:
+
+  val:
+    Resize:
+      - 64
+      - 64
+    ToTensor:
+
+  test:
+    Resize:
+      - 64
+      - 64
+    ToTensor:
+
+  predict:
+    Resize:
+      - 64
+      - 64
+    ToTensor:
+
+# target transforms configuration
+target_transforms_config:
+  train: null
+
+  val: null
+
+  test: null
+
+  predict: null
