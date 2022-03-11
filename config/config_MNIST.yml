@@ -1,0 +1,5 @@
+# parameters configuration
+mode: train
+root: data/
+predefined_dataset: MNIST
+classes: ["normal", "abnormal"]
