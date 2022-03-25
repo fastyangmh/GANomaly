@@ -27,12 +27,12 @@ class Predict:
         self.loader = Image.open
         self.color_space = project_parameters.color_space
 
-    def predict(self, filepath) -> Any:
+    def predict(self, inputs) -> Any:
         result = []
         fake_samples = []
-        if isfile(path=filepath):
+        if isfile(path=inputs):
             # predict the file
-            sample = self.loader(fp=filepath)
+            sample = self.loader(fp=inputs).convert(self.color_space)
             # the transformed sample dimension is (1, in_chans, freq, time)
             sample = self.transform(sample)[None]
             if self.device == 'cuda' and torch.cuda.is_available():
@@ -43,7 +43,7 @@ class Predict:
                 fake_samples.append(sample_hat.cpu().data.numpy())
         else:
             # predict the file from folder
-            dataset = ImagePredictDataset(root=filepath,
+            dataset = ImagePredictDataset(root=inputs,
                                           loader=self.loader,
                                           transform=self.transform,
                                           color_space=self.color_space)
@@ -74,4 +74,4 @@ if __name__ == '__main__':
 
     # predict file
     result = Predict(project_parameters=project_parameters).predict(
-        filepath=project_parameters.root)
+        inputs=project_parameters.root)
