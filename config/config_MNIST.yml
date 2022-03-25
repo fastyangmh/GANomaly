@@ -26,6 +26,20 @@ precision: 32
 max_epochs: 100
 color_space: L # (8-bit pixels, black and white)
 threshold: null
+web_interface: True
+examples:
+  [
+    "examples/MNIST/00000_7_abnormal.png",
+    "examples/MNIST/00001_2_abnormal.png",
+    "examples/MNIST/00002_1_abnormal.png",
+    "examples/MNIST/00003_0_normal.png",
+    "examples/MNIST/00004_4_abnormal.png",
+    "examples/MNIST/00007_9_abnormal.png",
+    "examples/MNIST/00011_6_abnormal.png",
+    "examples/MNIST/00061_8_abnormal.png",
+    "examples/MNIST/00433_5_abnormal.png",
+    "examples/MNIST/00449_3_abnormal.png",
+  ]
 
 # transforms configuration
 transforms_config:
